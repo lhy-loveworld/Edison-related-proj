@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS  = -g -Wall -lmraa
-TARGET = servo
+TARGET = relay
 platform = $(shell uname -r | grep 'edison')
 
 all: build
