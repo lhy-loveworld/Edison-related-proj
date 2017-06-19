@@ -7,7 +7,7 @@
 
 int main(int argc, char **argv) {
 	mraa_pwm_context pwm;
-  pwm = mraa_pwm_init(3);
+  pwm = mraa_pwm_init(5);
   if (pwm == NULL) {
     return 1;
   }
