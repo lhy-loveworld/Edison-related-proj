@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
           } else {
             mraa_pwm_pulsewidth_us(pwm, atoi(buffer));
             output = mraa_pwm_read(pwm);
-            printf("PWM value is %f\n", output)
+            printf("PWM value is %f\n", output);
           }
         }
         if (pfd[0].revents & POLLERR) {
