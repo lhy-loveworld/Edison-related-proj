@@ -30,8 +30,8 @@ int main(int argc, char **argv) {
     } else {
       if (ret_poll == 1) {
         if (pfd[0].revents & POLLIN) {
-          bzero(buffer, 20);
-          fgets(buffer, 20, stdin);
+          bzero(buffer, 10);
+          fgets(buffer, 10, stdin);
           if (!strcmp(buffer, "OFF\n")) {
             mraa_pwm_close(pwm);
             exit(0);
@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
             mraa_pwm_pulsewidth_us(pwm, atoi(buffer));
             output = mraa_pwm_read(pwm);
             printf("PWM value is %f\n", output);
-            sleep(1)
+            sleep(1);
           }
         }
         if (pfd[0].revents & POLLERR) {
