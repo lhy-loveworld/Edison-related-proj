@@ -39,6 +39,8 @@ int main(int argc, char **argv) {
             mraa_pwm_pulsewidth_us(pwm, atoi(buffer));
             output = mraa_pwm_read(pwm);
             printf("PWM value is %f\n", output);
+            printf("MAX period is %d\n", mraa_pwm_get_max_period(pwm));
+            printf("MIN period is %d\n", mraa_pwm_get_min_period(pwm));
             sleep(1);
           }
         }
