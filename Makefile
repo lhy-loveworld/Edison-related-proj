@@ -8,8 +8,7 @@ all: build
 build: $(TARGET).c
 
 ifeq ($(platform),)
-	 $(CC) -o $(TARGET)_tcp $(TARGET).c $(CFLAGS) -DDUMMY
-	 $(CC) -o $(TARGET)_tls $(TARGET).c $(CFLAGS) -DDUMMY
+	 $(CC) -o $(TARGET) $(TARGET).c $(CFLAGS) -DDUMMY
 else
 	 $(CC) -o $(TARGET)_tcp $(TARGET).c $(CFLAGS)
 	 $(CC) -o $(TARGET)_tls $(TARGET).c $(CFLAGS)
