@@ -11,9 +11,13 @@ int main(int argc, char **argv) {
   mraa_pwm_period_ms(pwm, 20);
   mraa_pwm_pulsewidth_us(pwm, 1000);
   mraa_pwm_enable(pwm, 1);
+  sleep(1);
+  mraa_pwm_pulsewidth_us(pwm, 2000);
+  sleep(1);
+  mraa_pwm_pulsewidth_us(pwm, 1500);
   float output = mraa_pwm_read(pwm);
   printf("PWM value is %f\n", output);
-  sleep(1);
+  
   output = mraa_pwm_read(pwm);
   printf("PWM value is %f\n", output);
   mraa_pwm_close(pwm);
