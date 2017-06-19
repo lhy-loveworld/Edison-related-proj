@@ -14,6 +14,8 @@ int main(int argc, char **argv) {
   float output = mraa_pwm_read(pwm);
   printf("PWM value is %f\n", output);
   sleep(1);
+  output = mraa_pwm_read(pwm);
+  printf("PWM value is %f\n", output);
   mraa_pwm_close(pwm);
   output = mraa_pwm_read(pwm);
   printf("PWM value is %f\n", output);
