@@ -9,12 +9,14 @@ int main(int argc, char **argv) {
     return 1;
   }
   mraa_pwm_period_ms(pwm, 20);
-  mraa_pwm_pulsewidth_us(pwm, 1500);
+  mraa_pwm_pulsewidth_us(pwm, 1000);
   mraa_pwm_enable(pwm, 1);
   float output = mraa_pwm_read(pwm);
   printf("PWM value is %f\n", output);
-  sleep(10);
+  sleep(1);
   mraa_pwm_close(pwm);
+  output = mraa_pwm_read(pwm);
+  printf("PWM value is %f\n", output);
   /*while (1) {
     value = value + 0.01f;
     mraa_pwm_write(pwm, value);
