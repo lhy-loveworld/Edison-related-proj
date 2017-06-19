@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "mraa/aio.h"
+#include "mraa/pwm.h"
 
 int main(int argc, char **argv) {
 	mraa_pwm_context pwm;
