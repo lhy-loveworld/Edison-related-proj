@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
   while (1) {
     value = value + 0.01f;
     mraa_pwm_write(pwm, value);
-    sleep(5);
+    sleep(0.5);
     if (value >= 1.0f) {
       value = 0.0f;
     }
