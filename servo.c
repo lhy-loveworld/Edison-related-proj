@@ -20,6 +20,7 @@ int main(int argc, char **argv) {
   pfd[0].events = POLLIN | POLLERR;
 
   char buffer[10];
+  float output;
   while (1) {
     int ret_poll = poll(pfd, 1, 0);
     if (ret_poll == -1) {
@@ -36,6 +37,8 @@ int main(int argc, char **argv) {
             exit(0);
           } else {
             mraa_pwm_pulsewidth_us(pwm, atoi(buffer));
+            output = mraa_pwm_read(pwm);
+            printf("PWM value is %f\n", output)
           }
         }
         if (pfd[0].revents & POLLERR) {
