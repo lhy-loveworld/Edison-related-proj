@@ -1,4 +1,6 @@
+#include <poll.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include "mraa/pwm.h"
 
@@ -9,8 +11,41 @@ int main(int argc, char **argv) {
     return 1;
   }
   mraa_pwm_period_ms(pwm, 20);
-  mraa_pwm_pulsewidth_us(pwm, 3000);
+  mraa_pwm_pulsewidth_us(pwm, 1500);
   mraa_pwm_enable(pwm, 1);
+
+  struct pollfd pfd[1];
+  pfd[0].fd = 0;
+  pfd[0].events = POLLIN | POLLERR;
+
+  char buffer[10];
+  while (1) {
+    int ret_poll = poll(pfd, 1, 0);
+    if (ret_poll == -1) {
+      fprintf(stderr, "poll() failed: %s\n", strerror(errno));
+      mraa_pwm_close(pwm);
+      exit(1);
+    } else {
+      if (ret_poll == 1) {
+        if (pfd[0].revents & POLLIN) {
+          bzero(buffer, 20);
+          fgets(buffer, 20, stdin);
+          if (!strcmp(buffer, "OFF\n")) {
+            mraa_pwm_close(pwm);
+            exit(0);
+          } else {
+            mraa_pwm_pulsewidth_us(pwm, atoi(buffer));
+          }
+        }
+        if (pfd[0].revents & POLLERR) {
+          fprintf(stderr, "read() failed: %s\n", strerror(errno));
+          mraa_pwm_close(pwm);
+          exit(1);
+        }
+      }
+    }
+  }
+
   float output = mraa_pwm_read(pwm);
   printf("PWM value 1 is %f\n", output);
   sleep(5);

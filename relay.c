@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
         if (a > 400) {
           status = 1 - status;
           mraa_gpio_write(rel, status);
-	  sleep(2);
+	        sleep(2);
         }
       }
     }
