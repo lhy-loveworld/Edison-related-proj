@@ -50,9 +50,6 @@ int main(int argc, char **argv) {
     }
   }
 
-  float output = mraa_pwm_read(pwm);
-  printf("PWM value 1 is %f\n", output);
-  sleep(5);
   /*mraa_pwm_pulsewidth_us(pwm, 1000);
   output = mraa_pwm_read(pwm);
   printf("PWM value 2 is %f\n", output);  
