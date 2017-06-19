@@ -9,8 +9,8 @@ int main(int argc, char **argv) {
     return 1;
   }
   mraa_pwm_period_ms(pwm, 20);
+  mraa_pwm_pulsewidth_ms(pwm, 1.5f);
   mraa_pwm_enable(pwm, 1);
-  float value = 0.0f;
   float output = mraa_pwm_read(pwm);
   printf("PWM value is %f\n", output);
   sleep(10);
