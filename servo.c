@@ -8,13 +8,13 @@ int main(int argc, char **argv) {
   if (pwm == NULL) {
     return 1;
   }
-  mraa_pwm_period_us(pwm, 200);
+  mraa_pwm_period_ms(pwm, 20);
   mraa_pwm_enable(pwm, 1);
   float value = 0.0f;
   while (1) {
     value = value + 0.01f;
     mraa_pwm_write(pwm, value);
-    usleep(50000);
+    sleep(5);
     if (value >= 1.0f) {
       value = 0.0f;
     }
