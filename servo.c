@@ -11,15 +11,14 @@ int main(int argc, char **argv) {
   mraa_pwm_period_ms(pwm, 20);
   mraa_pwm_enable(pwm, 1);
   float value = 0.0f;
-  while (value < 1) {
+  while (1) {
     value = value + 0.01f;
     mraa_pwm_write(pwm, value);
     sleep(0.5);
     if (value >= 1.0f) {
-      value = 0.0f;
+      return 0;
     }
     float output = mraa_pwm_read(pwm);
     printf("PWM value is %f\n", output);
   }
-	return 0;
 }
