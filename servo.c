@@ -13,6 +13,7 @@ int main(int argc, char **argv) {
   float value = 0.0f;
   float output = mraa_pwm_read(pwm);
   printf("PWM value is %f\n", output);
+  sleep(10);
   /*while (1) {
     value = value + 0.01f;
     mraa_pwm_write(pwm, value);
