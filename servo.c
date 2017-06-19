@@ -9,18 +9,18 @@ int main(int argc, char **argv) {
     return 1;
   }
   mraa_pwm_period_ms(pwm, 20);
-  mraa_pwm_pulsewidth_us(pwm, 2000);
+  mraa_pwm_pulsewidth_us(pwm, 3000);
   mraa_pwm_enable(pwm, 1);
   float output = mraa_pwm_read(pwm);
   printf("PWM value 1 is %f\n", output);
   sleep(5);
-  mraa_pwm_pulsewidth_us(pwm, 1000);
+  /*mraa_pwm_pulsewidth_us(pwm, 1000);
   output = mraa_pwm_read(pwm);
   printf("PWM value 2 is %f\n", output);  
   sleep(5);
   mraa_pwm_pulsewidth_us(pwm, 1500);
   output = mraa_pwm_read(pwm);
-  printf("PWM value is %f\n", output);
+  printf("PWM value is %f\n", output);*/
   
 
   mraa_pwm_close(pwm);
