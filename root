@@ -1,0 +1,6 @@
+liHY0925
+
+configure_edison --wifi
+
+gcc -o out receiver.c -lmraa
+
